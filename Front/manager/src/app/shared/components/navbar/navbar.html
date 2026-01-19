@@ -1,0 +1,28 @@
+<nav class="sidebar">
+  <div class="sidebar-header">
+    <span class="logo">CRM</span>
+    <button class="sidebar-toggle" (click)="isOpen = !isOpen" aria-label="Abrir/Cerrar menú">
+      &#9776;
+    </button>
+  </div>
+  <ul [class.open]="isOpen">
+    <li><a routerLink="/home" routerLinkActive="active">
+      <div class="item">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+      </div>
+    </a></li>
+    <li><a routerLink="/dashboard" routerLinkActive="active">
+      <div class="item">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Dashboard</span>
+      </div>
+    </a></li>
+    <li><a routerLink="/profile" routerLinkActive="active">
+      <div class="item">
+        <i class="fa-solid fa-address-card"></i>
+        <span>Perfil</span>
+      </div>
+    </a></li>
+  </ul>
+</nav>

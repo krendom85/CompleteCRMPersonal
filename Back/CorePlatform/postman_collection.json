@@ -1,0 +1,67 @@
+{
+  "info": {
+    "name": "CorePlatform Role API",
+    "version": "1.0.0",
+    "description": "Postman collection to test Role endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "localhost",
+      "type": "string"
+    },
+    {
+      "key": "port",
+      "value": "5080",
+      "type": "string"
+    },
+    {
+      "key": "id",
+      "value": "1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Roles",
+      "item": [
+        { "name": "List Roles", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/roles", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "roles"] } } },
+        { "name": "Get Role by ID", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/roles/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "roles", "{{id}}"] } } },
+        { "name": "Create Role", "request": { "method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"name\": \"ROLE_USER\",\n  \"description\": \"User role\"\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/roles", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "roles"] } } },
+        { "name": "Update Role", "request": { "method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"name\": \"ROLE_ADMIN\",\n  \"description\": \"Admin role\"\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/roles/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "roles", "{{id}}"] } } },
+        { "name": "Delete Role", "request": { "method": "DELETE", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/roles/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "roles", "{{id}}"] } } }
+      ]
+    },
+    {
+      "name": "Permissions",
+      "item": [
+        { "name": "List Permissions", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/permissions", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "permissions"] } } },
+        { "name": "Get Permission by ID", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/permissions/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "permissions", "{{id}}"] } } },
+        { "name": "Create Permission", "request": { "method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"name\": \"PERM_READ\",\n  \"description\": \"Read permission\"\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/permissions", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "permissions"] } } },
+        { "name": "Update Permission", "request": { "method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"name\": \"PERM_WRITE\",\n  \"description\": \"Write permission\"\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/permissions/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "permissions", "{{id}}"] } } },
+        { "name": "Delete Permission", "request": { "method": "DELETE", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/permissions/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "permissions", "{{id}}"] } } }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        { "name": "List Users", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/users", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "users"] } } },
+        { "name": "Get User by ID", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/users/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "users", "{{id}}"] } } },
+        { "name": "Create User", "request": { "method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"email\": \"user@email.com\",\n  \"username\": \"usuario\",\n  \"password\": \"123456\",\n  \"status\": \"ACTIVE\",\n  \"companyId\": 1,\n  \"roleIds\": [1]\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/users", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "users"] } } },
+        { "name": "Update User", "request": { "method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"email\": \"user@email.com\",\n  \"username\": \"usuario\",\n  \"password\": \"123456\",\n  \"status\": \"ACTIVE\",\n  \"companyId\": 1,\n  \"roleIds\": [1]\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/users/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "users", "{{id}}"] } } },
+        { "name": "Delete User", "request": { "method": "DELETE", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/users/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "users", "{{id}}"] } } }
+      ]
+    },
+    {
+      "name": "Companies",
+      "item": [
+        { "name": "List Companies", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/companies", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "companies"] } } },
+        { "name": "Get Company by ID", "request": { "method": "GET", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/companies/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "companies", "{{id}}"] } } },
+        { "name": "Create Company", "request": { "method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"name\": \"Empresa Ejemplo\",\n  \"ruc\": \"1234567890\",\n  \"address\": \"Calle 123\"\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/companies", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "companies"] } } },
+        { "name": "Update Company", "request": { "method": "PUT", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\n  \"name\": \"Empresa Modificada\",\n  \"ruc\": \"1234567890\",\n  \"address\": \"Calle Nueva\"\n}"}, "url": { "raw": "http://{{baseUrl}}:{{port}}/api/companies/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "companies", "{{id}}"] } } },
+        { "name": "Delete Company", "request": { "method": "DELETE", "header": [], "url": { "raw": "http://{{baseUrl}}:{{port}}/api/companies/{{id}}", "protocol": "http", "host": ["{{baseUrl}}"], "port": "{{port}}", "path": ["api", "companies", "{{id}}"] } } }
+      ]
+    }
+  ]
+}
