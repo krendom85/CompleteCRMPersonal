@@ -1,16 +1,55 @@
+/* Footer del sidebar */
+.sidebar-footer {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 1rem;
+	margin-top: auto;
+  border-top: 1px solid var(--border-color);
+}
+
+.sidebar-btn {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 8px;
+	border: none;
+	border-radius: 8px;
+	background: var(--color-secondary);
+	color: #fff;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.sidebar-btn:hover {
+	background: var(--color-primary);
+}
+
+.logout-btn {
+	background: var(--color-error);
+}
+.logout-btn:hover {
+	background: #c0392b;
+}
+.support-btn {
+	background: var(--color-secondary);
+}
+.support-btn:hover {
+	background: #159c86;
+}
 /* Sidebar base */
 .sidebar {
-	position: fixed;
-	top: 0;
-	left: 0;
 	height: 100vh;
-	width: 220px;
-	background: #232946;
-	color: #fff;
+	width: 200px;
+	background: var(--bg-sidebar);
+	color: var(--text-primary);
 	display: flex;
 	flex-direction: column;
 	z-index: 1000;
 	transition: width 0.2s;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
 }
 .sidebar-header {
 	display: flex;
@@ -25,7 +64,7 @@
 .sidebar-toggle {
 	background: none;
 	border: none;
-	color: #fff;
+	color: var(--text-primary);
 	font-size: 1.5rem;
 	cursor: pointer;
 	display: none;
@@ -40,19 +79,19 @@
 }
 .sidebar ul li {
 	width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .sidebar ul li a {
+  margin : 0 10px;
   display: block;
-  border-left: 1px solid white;
-	padding: 1rem;
-	color: #fff;
+	padding: 14px 10px;
+	color: var(--text-primary);
 	text-decoration: none;
-	transition: background 0.2s;
+  border-radius: 8px;
 }
 .sidebar ul li a.active,
 .sidebar ul li a:hover {
-  background: #121629;
+  background: var(--primary);
 }
 
 .item{
@@ -72,7 +111,7 @@
 		position: absolute;
 		top: 50px;
 		left: 0px;
-		background: #232946;
+		background: var(--bg-sidebar);
 		width: 160px;
 		height: calc(100vh - 50px);
 		flex-direction: column;
@@ -86,6 +125,10 @@
 	}
 
   .sidebar ul li a span{
+    display: none;
+  }
+
+  .sidebar .sidebar-footer button span{
     display: none;
   }
 }
@@ -105,7 +148,7 @@
 		top: 60px;
 		left: 0;
 		width: 100vw;
-		background: #232946;
+		background: var(--bg-sidebar);
 		display: none;
 	}
 	.sidebar ul.open {

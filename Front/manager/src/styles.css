@@ -1,10 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  /* --- COLORES DE FONDO --- */
+  --bg-main: #0B0E14;        /* Fondo general de la aplicación */
+  --bg-sidebar: #12141B;     /* Fondo de la navegación lateral */
+  --bg-card: #1C1F26;        /* Fondo de tarjetas y contenedores */
+  --bg-input: #242832;       /* Fondo de campos de texto */
+
+  /* --- COLORES DE MARCA Y ACCIÓN --- */
+  --primary: #0061FF;        /* Azul principal para botones y acciones */
+  --primary-hover: #0051D4;  /* Azul para estados hover */
+  --accent-cyan: #00FFFF;    /* Color de acento para gráficas o detalles */
+
+  /* --- ESTADOS Y SEMÁNTICA --- */
+  --success: #00E676;        /* Verde para ventas, completado o éxito */
+  --warning: #FFD600;        /* Amarillo para tareas pendientes o alertas */
+  --danger: #FF5252;         /* Rojo para urgencias o errores */
+  --info: #29B6F6;           /* Azul claro para información neutral */
+
+  /* --- COLORES DE TEXTO --- */
+  --text-primary: #FFFFFF;   /* Texto principal (títulos) */
+  --text-secondary: #94A3B8; /* Texto secundario (párrafos, labels) */
+  --text-muted: #64748B;      /* Texto desactivado o muy secundario */
+
+  /* --- BORDES Y SOMBRAS --- */
+  --border-color: #2D3748;   /* Color para líneas divisorias */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+
+  /* --- TIPOGRAFÍA --- */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* --- TAMAÑOS DE FUENTE (Escala rem) --- */
+  --text-xs: 0.75rem;    /* 12px - Labels, captions, pequeños detalles */
+  --text-sm: 0.875rem;   /* 14px - Cuerpo de tablas, descripción de tareas */
+  --text-base: 1rem;     /* 16px - Texto estándar, inputs, botones */
+  --text-lg: 1.125rem;   /* 18px - Subtítulos o texto destacado */
+  --text-xl: 1.25rem;    /* 20px - Títulos de tarjetas o modales */
+  --text-2xl: 1.5rem;    /* 24px - Títulos de sección (Dashboard, CRM) */
+  --text-3xl: 1.875rem;  /* 30px - Números grandes de KPIs */
+  --text-4xl: 2.25rem;   /* 36px - Títulos de bienvenida o hero */
+
+  /* --- PESOS DE FUENTE --- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+}
+
+
 html {
-  font-size: 16px;
+  font-size: var(--text-sm);
+
 }
 
 body {
-  font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+  font-family: var(--font-main);
+  background-color: var(--bg-main);
+  margin: 0;
+  padding: 0;
 }
-
 
