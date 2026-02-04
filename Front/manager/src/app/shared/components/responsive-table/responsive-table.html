@@ -1,0 +1,91 @@
+<div class="responsive-table-container">
+  @if (data!.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          @for (col of columns; track col.key) {
+            <th>{{ col.label }}</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of data; track row) {
+          <tr>
+            @for (col of columns; track col.key) {
+              <td>
+                @if (col.type === 'avatar_text' && row[col.key]) {
+                  <ng-container *ngIf="asAvatarText(row, col.key) as avatar">
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      <img [src]="avatar.img" [alt]="avatar.name" style="width:32px;height:32px;border-radius:50%" />
+                      <div>
+                        <div>{{ avatar.name }}</div>
+                        <small *ngIf="avatar.subtext">{{ avatar.subtext }}</small>
+                      </div>
+                    </div>
+                  </ng-container>
+                } @else if (col.type === 'badge' && row[col.key]) {
+                  <ng-container *ngIf="asBadge(row, col.key) as badge">
+                    <span class="badge" [ngClass]="'badge-' + (badge.type || 'default')">
+                    • {{ badge.label }}
+                    </span>
+                  </ng-container>
+                } @else if (col.type === 'currency' && row[col.key]) {
+                  <ng-container *ngIf="asCurrency(row, col.key) as currency">
+                    <span>{{ currency.amount | currency:currency.currencySymbol }}</span>
+                  </ng-container>
+                } @else if (col.type === 'avatars' && row[col.key]) {
+                  <ng-container *ngIf="asAssignedUsers(row, col.key) as users">
+                    <div style="display:flex;align-items:center;gap:4px;">
+                      @for (user of users; track user.img) {
+                        <img [src]="user.img" [alt]="user.name" style="width:24px;height:24px;border-radius:50%" />
+                      }
+                    </div>
+                  </ng-container>
+                } @else if (col.type === 'actions' && row[col.key]) {
+                  <ng-container *ngIf="asActions(row, col.key) as actions">
+                    @for (action of actions; track action.icon) {
+                      <button type="button" class="btn-action" [title]="action.tooltip" (click)="action.callback()">
+                        <i class="material-icons">{{ action.icon }}</i>
+                      </button>
+                    }
+                  </ng-container>
+                } @else if (col.type === 'date' && row[col.key]) {
+                  <ng-container *ngIf="asDateInfo(row, col.key) as dateInfo">
+                    <span>{{ dateInfo.date | date:dateInfo.format || 'shortDate' }}</span>
+                  </ng-container>
+                } @else if (col.type === 'boolean' && row[col.key]) {
+                  <ng-container *ngIf="asBooleanInfo(row, col.key) as boolInfo">
+                    <span>
+                      @if (boolInfo.value) {
+                        <i class="material-icons" style="color:green;">check_circle</i>
+                        <span *ngIf="boolInfo.trueLabel">{{ boolInfo.trueLabel }}</span>
+                      } @else {
+                        <i class="material-icons" style="color:red;">cancel</i>
+                        <span *ngIf="boolInfo.falseLabel">{{ boolInfo.falseLabel }}</span>
+                      }
+                    </span>
+                  </ng-container>
+                } @else if (col.type === 'number' && row[col.key]) {
+                  <ng-container *ngIf="asNumberInfo(row, col.key) as numberInfo">
+                    <span>{{ numberInfo.value }}</span>
+                  </ng-container>
+                } @else if (col.type === 'text' && row[col.key]) {
+                  <ng-container *ngIf="asTextInfo(row, col.key) as textInfo">
+                    <span>{{ textInfo.value }}</span>
+                  </ng-container>
+                } @else {
+                  <span>{{ row[col.key] }}</span>
+                }
+              </td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <div class="empty-state">
+      <img src="assets/images/empty-table.svg" alt="Sin datos" />
+      <p class="empty-state-text">No se encontraron resultados</p>
+    </div>
+  }
+</div>

@@ -1,0 +1,60 @@
+.responsive-table-container{
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--bg-card);
+  padding: 0 10px;
+  border-radius: 8px;
+
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  color: var(--text-primary);
+  font-size: var(--text-xs);
+}
+
+td, th{
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--bg-input);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  border-radius: 12px;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  background: #bdbdbd;
+  transition: background 0.2s;
+  vertical-align: middle;
+  box-shadow: var(--shadow-sm);
+}
+.badge-success {
+  background: rgba(40, 167, 69, 0.18);
+  color: var(--success);
+  border: 0.6px solid var(--success);
+}
+.badge-warning {
+  background: rgba(255, 193, 7, 0.18); /* amarillo con opacidad */
+  color: var(--warning);
+  border: 0.6px solid var(--warning);
+}
+.badge-danger {
+  background: rgba(220, 53, 69, 0.18); /* rojo con opacidad */
+  color: var(--danger);
+  border: 0.6px solid var(--danger);
+}
+.badge-default {
+  background: rgba(189, 189, 189, 0.18); /* gris con opacidad */
+  color: var(--text-secondary);
+  border: 0.6px solid var(--border-color);
+}
