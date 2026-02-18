@@ -22,7 +22,7 @@
   margin-left: 2rem;
 }
 .topbar-search i {
-	color: var(--color-secondary);
+	color: var(--color-primary);
 	margin-right: 0.5rem;
 }
 .topbar-search input {

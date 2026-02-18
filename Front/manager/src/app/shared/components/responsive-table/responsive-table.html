@@ -1,4 +1,18 @@
 <div class="responsive-table-container">
+  <div class="top-table">
+    <div class="top-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Busca clientes, tickets o proyectos..." />
+    </div>
+    <div class="top-buttons">
+        <button class="btn" title="Filtrar">
+          <i class="fa-solid fa-filter"></i> Filtrar
+        </button>
+        <button class="btn" title="Exportar">
+          <i class="fa-solid fa-file-download"></i> Exportar
+        </button>
+    </div>
+  </div>
   @if (data!.length > 0) {
     <table>
       <thead>
@@ -31,7 +45,7 @@
                   </ng-container>
                 } @else if (col.type === 'currency' && row[col.key]) {
                   <ng-container *ngIf="asCurrency(row, col.key) as currency">
-                    <span>{{ currency.amount | currency:currency.currencySymbol }}</span>
+                    <span class="currency">{{ currency.amount | currency:currency.currencySymbol }}</span>
                   </ng-container>
                 } @else if (col.type === 'avatars' && row[col.key]) {
                   <ng-container *ngIf="asAssignedUsers(row, col.key) as users">
@@ -42,13 +56,19 @@
                     </div>
                   </ng-container>
                 } @else if (col.type === 'actions' && row[col.key]) {
-                  <ng-container *ngIf="asActions(row, col.key) as actions">
-                    @for (action of actions; track action.icon) {
-                      <button type="button" class="btn-action" [title]="action.tooltip" (click)="action.callback()">
-                        <i class="material-icons">{{ action.icon }}</i>
-                      </button>
-                    }
-                  </ng-container>
+                    <ng-container *ngIf="asActions(row, col.key) as actions">
+                      <div class="actions-menu-wrapper" style="position:relative;display:inline-block;">
+                        <button type="button" class="btn-action" [title]="'Acciones'" (click)="row._showMenu = !row._showMenu">
+                          <i class="fa-solid fa-ellipsis-v"></i>
+                        </button>
+                        <ul *ngIf="row._showMenu" class="actions-menu" style="position:absolute;right:0;z-index:10;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.15);margin:0;padding:4px 0;list-style:none;min-width:140px;">
+                          <li *ngFor="let action of actions" (click)="action.callback(); row._showMenu = false" style="padding:8px 16px;cursor:pointer;white-space:nowrap;">
+                            <i *ngIf="action.icon" [class]="'fa-solid fa-' + action.icon" style="font-size:18px;vertical-align:middle;margin-right:8px;"></i>
+                            {{ action.tooltip }}
+                          </li>
+                        </ul>
+                      </div>
+                    </ng-container>
                 } @else if (col.type === 'date' && row[col.key]) {
                   <ng-container *ngIf="asDateInfo(row, col.key) as dateInfo">
                     <span>{{ dateInfo.date | date:dateInfo.format || 'shortDate' }}</span>
