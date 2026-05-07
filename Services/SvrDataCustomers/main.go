@@ -6,6 +6,7 @@ import (
 
 	"github.com/krendom85/SvrDataCustomers/internal/config"
 	"github.com/krendom85/SvrDataCustomers/internal/db"
+	"github.com/krendom85/SvrDataCustomers/internal/db/service"
 	"github.com/krendom85/SvrDataCustomers/internal/messaging"
 	"github.com/streadway/amqp"
 )
@@ -17,7 +18,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defer db.GetDB().Close()
+
+	err = service.Create(db.GetDB(), "1721006565")
+	if err != nil {
+		fmt.Printf("Error creando entidad: %v\n", err)
+	}
 
 	mq, err := messaging.New(cfg.MQUrl, cfg.QueueName)
 	if err != nil {

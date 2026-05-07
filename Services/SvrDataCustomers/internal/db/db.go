@@ -1,34 +1,33 @@
 package db
 
 import (
-	"context"
-	"database/sql"
 	"log"
 	"time"
 
-	_ "github.com/lib/pq"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
-var DB *sql.DB
+var DB *gorm.DB
 
 func Init(dbUrl string, maxOpen, maxIdle int, connMaxLifetime time.Duration) error {
 	var err error
-	DB, err = sql.Open("postgres", dbUrl)
+	DB, err = gorm.Open(postgres.Open(dbUrl), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("Error abriendo la conexión a la base de datos: %v", err)
 	}
-	DB.SetMaxOpenConns(maxOpen)
-	DB.SetMaxIdleConns(maxIdle)
-	DB.SetConnMaxLifetime(connMaxLifetime)
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	if err := DB.PingContext(ctx); err != nil {
-		log.Fatalf("No se pudo conectar a la base de datos: %v", err)
+	sqlDB, err := DB.DB()
+	if err != nil {
+		return err
 	}
+	sqlDB.SetMaxOpenConns(maxOpen)
+	sqlDB.SetMaxIdleConns(maxIdle)
+	sqlDB.SetConnMaxLifetime(connMaxLifetime)
+
 	return nil
 }
 
-func GetDB() *sql.DB {
+func GetDB() *gorm.DB {
 	return DB
 }

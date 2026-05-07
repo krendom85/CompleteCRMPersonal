@@ -1,0 +1,12 @@
+CREATE TABLE rucs (
+    id SERIAL PRIMARY KEY,
+    ruc VARCHAR(20) NOT NULL UNIQUE,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    status VARCHAR(20),
+    step VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
